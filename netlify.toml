@@ -1,0 +1,15 @@
+# Plain static site: no build step needed, serve files from the public/ folder.
+[build]
+  base = "/"
+  publish = "public"
+  command = "echo 'Static site - no build required'"
+
+# The Gatsby plugin is enabled on this project but the site isn't a Gatsby site.
+[build.environment]
+  NETLIFY_SKIP_GATSBY_BUILD_PLUGIN = "true"
+
+# .jfif is a JPEG image; make sure browsers receive the correct type.
+[[headers]]
+  for = "/*.jfif"
+  [headers.values]
+    Content-Type = "image/jpeg"
